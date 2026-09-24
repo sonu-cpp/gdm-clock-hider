@@ -49,10 +49,7 @@ Then run:
 sudo ./uninstall_hide_gdm_clock.sh
 ```
 
-The uninstall script uses the latest backup automatically. It removes the extension, restores the previous GDM dconf directory, updates dconf, and restarts GDM. fileciteturn0file1L31-L63
-
-
-This is also the command suggested by the installer for checking why the extension may not have loaded. 
+The uninstall script uses the latest backup automatically. It removes the extension, restores the previous GDM dconf directory, updates dconf, and restarts GDM.
 
 ## A few things to keep in mind
 
