@@ -2,7 +2,7 @@
 
 A small script to hide the date/time clock from the GNOME GDM login screen.
 
-This works by installing a small GNOME Shell extension specifically for the GDM session. The install script also backs up the existing GDM dconf configuration before making changes. fileciteturn0file0L4-L12
+This works by installing a small GNOME Shell extension specifically for the GDM session. The install script backs up the existing GDM dconf configuration before making changes. 
 
 ## What it does
 
@@ -14,28 +14,6 @@ This works by installing a small GNOME Shell extension specifically for the GDM 
 - Restarts GDM after installation.
 
 > **Note:** Restarting GDM will end your current graphical session. Save your work before running the installer.
-
-## Files
-
-```text
-install_hide_gdm_clock.sh
-uninstall_hide_gdm_clock.sh
-```
-
-`install_hide_gdm_clock.sh` installs and enables the extension.
-
-`uninstall_hide_gdm_clock.sh` removes the extension and restores the GDM configuration from the backup created during installation. fileciteturn0file1L4-L9
-
-## Requirements
-
-You need:
-
-- GNOME Shell / GDM
-- `dconf`
-- `dconf-cli`
-- `sudo` access
-
-The installer checks for `gnome-shell` and `dconf` before continuing. fileciteturn0file0L24-L36
 
 ## Installation
 
@@ -55,19 +33,7 @@ That's it.
 
 The script will create the extension, update the GDM dconf database, and restart GDM.
 
-After it finishes, log out completely or reboot and check the GDM login screen. fileciteturn0file0L178-L187
-
-### Recommended way to run it
-
-Since this changes GDM and restarts the display manager, running it from a TTY is recommended:
-
-```text
-Ctrl + Alt + F3
-```
-
-Log in there and run the commands from the TTY.
-
-It is also a good idea to have a live USB available in case GDM needs to be recovered.
+After it finishes, log out completely or reboot and check the GDM login screen.
 
 ## Uninstall / Restore
 
@@ -85,27 +51,6 @@ sudo ./uninstall_hide_gdm_clock.sh
 
 The uninstall script uses the latest backup automatically. It removes the extension, restores the previous GDM dconf directory, updates dconf, and restarts GDM. fileciteturn0file1L31-L63
 
-### Using a specific backup
-
-If you have more than one backup and want to restore a specific one:
-
-```bash
-sudo ./uninstall_hide_gdm_clock.sh /path/to/backup.tar.gz
-```
-
-Backups are stored under:
-
-```text
-/root/gdm-clock-ext-backup/
-```
-
-## If the clock is still showing
-
-Check the GDM journal for extension-related errors:
-
-```bash
-journalctl -b -u gdm | grep -i -E 'extension|hide-clock-gdm'
-```
 
 This is also the command suggested by the installer for checking why the extension may not have loaded. fileciteturn0file0L184-L187
 
