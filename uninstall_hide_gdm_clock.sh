@@ -3,17 +3,7 @@
 #
 # Undoes install_hide_gdm_clock.sh: removes the extension directory and
 # restores /etc/dconf/db/gdm.d/ from the backup made at install time.
-#
-# Usage:
-#   sudo ./uninstall_hide_gdm_clock.sh                      # uses the most recent backup
-#   sudo ./uninstall_hide_gdm_clock.sh /path/to/backup.tar.gz  # uses a specific backup
-#
-# If this also fails to bring GDM back (e.g. from a live USB / chroot),
-# the last-resort fallback is:
-#   1. Delete /usr/share/gnome-shell/extensions/hide-clock-gdm@local/
-#   2. Delete any file under /etc/dconf/db/gdm.d/ that mentions
-#      hide-clock-gdm@local (or the whole enabled-extensions line)
-#   3. Run: dconf update
+
 
 set -euo pipefail
 
@@ -60,4 +50,3 @@ fi
 echo "Restarting GDM..."
 systemctl restart gdm
 
-echo "Done."
