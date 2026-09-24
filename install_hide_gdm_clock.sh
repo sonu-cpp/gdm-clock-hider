@@ -10,8 +10,7 @@
 # uninstall_hide_gdm_clock.sh can restore GDM's configuration exactly.
 #
 # Run as root. Restarts GDM at the end.
-# Recommended: run from a TTY (Ctrl+Alt+F3), and have a live USB on
-# hand just in case, per general GDM-extension caveats.
+# Recommended: run from a TTY (Ctrl+Alt+F3), 
 
 set -euo pipefail
 
@@ -126,6 +125,7 @@ echo "Extension files installed at $EXT_DIR"
 # enabled-extensions list already exists for gdm, rather than
 # overwriting it, so any extension already enabled there (e.g. from a
 # theming tool) keeps working.
+
 EXISTING_FILE=""
 for f in "$DCONF_GDM_DIR"/*; do
     [[ -f "$f" ]] || continue
@@ -181,7 +181,4 @@ echo "dconf database updated."
 echo "Restarting GDM..."
 systemctl restart gdm
 
-echo "Done. Log out fully (or reboot) and check the greeter."
-echo "If the clock is still there, check the shell log for why the"
-echo "extension didn't load:"
-echo "  journalctl -b -u gdm | grep -i -E 'extension|hide-clock-gdm'"
+
